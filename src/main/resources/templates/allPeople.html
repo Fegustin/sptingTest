@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{/allPeople/filter}" th:method="POST" th:object="${person}">
+    <label th:for="filter">
+        <input type="text" placeholder="filter" th:field="*{name}" th:id="filter">
+    </label>
+    <input type="submit" value="Search!">
+</form>
+
+<div th:each="it : ${persons}">
+    <p th:text="${it.name}"></p>
+    <p th:text="${it.author.username} ?: 'Пусто'"></p>
+</div>
+</body>
+</html>
